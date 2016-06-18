@@ -1,0 +1,4 @@
+  <svg ng-attr-width="{{container.width}}" ng-attr-height="{{container.height}}" ng-click="newClick($event)">
+    <!--<circle ng-class="{'no-animate' : noAnimate}" cx="{{splashCenter.x}}" cy="{{splashCenter.y}}" r="{{size}}"  fill="{{fill}}"/>-->
+    <circle ng-style="starting && startValues || !starting && endValues" clip-path="url(#heart)"/>
+  </svg>
