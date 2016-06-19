@@ -1,4 +1,14 @@
-  <svg ng-attr-width="{{container.width}}" ng-attr-height="{{container.height}}" ng-click="newClick($event)">
-    <!--<circle ng-class="{'no-animate' : noAnimate}" cx="{{splashCenter.x}}" cy="{{splashCenter.y}}" r="{{size}}"  fill="{{fill}}"/>-->
-    <circle ng-style="starting && startValues || !starting && endValues" clip-path="url(#heart)"/>
-  </svg>
+<svg
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   version="1.0"
+   ng-click="newClick($event)"
+   >
+
+    <clipPath ng-attr-id="{{identifier}}" >
+    <path
+      ng-attr-d="{{path}}" />
+   </clipPath>
+   <circle ng-style="starting && startValues || !starting && endValues" clip-path="{{clippingPath}}"/>
+   <path ng-attr-d="{{path}}" fill="transparent" class="to-fill" ng-class="{'filled': toggledOn}" ng-attr-stroke="{{color.stroke}}" />
+</svg>

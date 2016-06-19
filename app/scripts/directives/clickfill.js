@@ -11,6 +11,12 @@ angular.module('clickFillApp')
     return {
       templateUrl: '/views/click-fill.html',
       restrict: 'E',
-      controller:'ClickfillCtrl'
+      controller:'ClickfillCtrl',
+      scope: {
+        'transitionTime':'=',
+        'color':'=',
+        'path': '=',
+        'identifier': '='
+      }
     };
   });

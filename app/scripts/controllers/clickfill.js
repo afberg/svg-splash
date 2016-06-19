@@ -9,28 +9,20 @@
  */
 angular.module('clickFillApp')
   .controller('ClickfillCtrl', function ($scope, $timeout) {
-    var lastStarted = new Date();
-    var transitionTime = {
-      open:1000,
-      close:500
-    };
-    var color = {
-      start:"#FF5722",
-      end :"#FFEB3B"
-    }
+    $scope.clippingPath='url(#'+$scope.identifier+')';
     $scope.startValues={
       cx:0,
       cy:0,
       r:0,
-      fill:color.start,
-      transition: 'r '+transitionTime.close+'ms, fill '+transitionTime.close+'ms'
+      fill:$scope.color.start,
+      transition: 'r '+$scope.transitionTime.close+'ms, fill '+$scope.transitionTime.close+'ms'
     };
     $scope.endValues={
       cx:100,
       cy:100,
-      r:500,
-      fill:color.end,
-      transition:'all ' + transitionTime.open + 'ms'
+      r:10,
+      fill:$scope.color.end,
+      transition:'all ' + $scope.transitionTime.open + 'ms ease-in'
     };
     $scope.starting=true;
 
@@ -40,8 +32,6 @@ angular.module('clickFillApp')
         height:event.currentTarget.clientHeight
 
       };
-      console.log("srcElem");
-      //console.log(element);
       if(!$scope.toggledOn){
         if(!$scope.starting){
           $scope.starting=true;
@@ -49,12 +39,15 @@ angular.module('clickFillApp')
         }
         setStyling(event).then(function(){
           $scope.starting=false;
-          $timeout(transitionTime.open/3).then(function(){
+          $timeout($scope.transitionTime.open).then(function(){
             //$scope.starting=true;
-            $scope.toggledOn=true;
+            if(!$scope.starting){
+              $scope.toggledOn=true;
+            }
+            //$scope.toggledOn=true;
 
-          })
-        })
+          });
+        });
       } else{
         $scope.toggledOn=false;
         setStyling(event).then(function(){
@@ -65,10 +58,7 @@ angular.module('clickFillApp')
 
 
 
-    }
-    $scope.test=function(){
-      console.log("TESTING");
-    }
+    };
 
     function setStyling(event){
       $scope.startValues.cx=event.offsetX;
@@ -76,18 +66,20 @@ angular.module('clickFillApp')
       $scope.endValues.cx=event.offsetX;
       $scope.endValues.cy=event.offsetY;
       $scope.endValues.r=calculateSize(event.offsetX, event.offsetY);
-      return $timeout(10);
+      return $timeout(20);
 
     }
 
     function calculateSize(xValue, yValue){
-      let left = xValue < $scope.container.width/2;
-      let top = yValue < $scope.container.height/2;
+      var left = xValue < $scope.container.width/2;
+      var top = yValue < $scope.container.height/2;
       var x,y;
       x = (left ? $scope.container.width-xValue : xValue);
       y = (top ? $scope.container.height-yValue : yValue);
-      console.log("X:" + x + " Y: " + y);
-      console.log("LEFT:" + left + "TOP:"+top)
+      console.log("x: " + x);
+      console.log("y: " + y);
+      console.log("ans: " + Math.sqrt(x*x+y*y));
+
       return Math.sqrt(x*x+y*y);
     }
   });

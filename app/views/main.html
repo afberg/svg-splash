@@ -1,47 +1,16 @@
-
-
-<div class="" ng-click="test()" ng-controller="ClickfillCtrl">
-  <svg
-     xmlns:svg="http://www.w3.org/2000/svg"
-     xmlns="http://www.w3.org/2000/svg"
-     version="1.0"
-     width="420"
-     height="400"
-     id="svg2" ng-click="newClick($event)">
-     <path
-     d="
-      M 210.000 320.000
-      L 327.557 371.803
-      L 314.616 243.992
-      L 400.211 148.197
-      L 274.656 121.008
-      L 210.000 10.000
-      L 145.344 121.008
-      L 19.789 148.197
-      L 105.384 243.992
-      L 92.443 371.803
-      L 210.000 320.000
-      "
-      stroke="black" fill="white" class="to-fill" ng-class="{'filled': toggledOn}" />
-      <clipPath id="heart" >
-      <path
-        d="
-         M 210.000 320.000
-         L 327.557 371.803
-         L 314.616 243.992
-         L 400.211 148.197
-         L 274.656 121.008
-         L 210.000 10.000
-         L 145.344 121.008
-         L 19.789 148.197
-         L 105.384 243.992
-         L 92.443 371.803
-         L 210.000 320.000
-         " />
-     </clipPath>
-     <circle ng-style="starting && startValues || !starting && endValues" clip-path="url(#heart)"/>
-  </svg>
+<div class="test">
+  <click-fill color="{start:'#FF5722', end:'#FFEB3B', stroke:'#E65100'}" transition-time="{open:300,close:200}" path="star" identifier="'afwfafas'"></click-fill>
 </div>
 <div class="test">
-  <click-fill></click-fill>
+  <click-fill color="{start:'#C2185B', end:'#EC407A', stroke:'#880E4F'}" transition-time="{open:300,close:200}" path="heart" identifier="'asfaf'"></click-fill>
+</div>
+<div class="test2">
+  <click-fill color="{start:'#757575', end:'#212121', stroke:'#757575'}" transition-time="{open:300,close:200}" path="graduation" identifier="'1233'"></click-fill>
+</div>
+
+<div class="test">
+  <click-fill color="{start:'#0097A7', end:'#00BCD4', stroke:'#0097A7'}" transition-time="{open:300,close:200}" path="group" identifier="'2145125125'"></click-fill>
+</div>
+<div class="test2">
+  <click-fill color="{start:'#5D4037', end:'#9E9E9E', stroke:'#3E2723'}" transition-time="{open:200,close:100}" path="square" identifier="'asfaafaw'"></click-fill>
 </div>
